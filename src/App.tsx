@@ -118,22 +118,22 @@ const slideOutcomes: SlideInfo[] = [
 
 const setupCards: SlideInfo[] = [
   {
-    title: 'Copiar a base',
+    title: 'Rodar o init',
     description:
-      'Comece pelo CSS, pelos utilitários e pelo primeiro componente. O objetivo é validar rápido antes de escalar.',
-    items: ['index.css', 'lib/utils.ts', 'button.tsx'],
+      'O consumidor executa a CLI na raiz do projeto. Ela detecta o gerenciador de pacotes, instala os estilos e prepara a aplicação para receber o tema.',
+    items: ['pnpm dlx', 'init', '@itps/styles'],
   },
   {
-    title: 'Conectar os tokens',
+    title: 'Aplicar o tema',
     description:
-      'Os tokens de cor e as variáveis CSS viram a fonte da verdade para identidade, estados e superfícies.',
-    items: ['OKLCH', 'light/dark', '@itps/styles'],
+      'A CLI encontra o CSS global, remove o tema anterior e escreve o bloco inline com tokens, dark mode e mapeamentos Tailwind.',
+    items: ['src/index.css', 'itps-theme', 'tokens'],
   },
   {
-    title: 'Adaptar por biblioteca',
+    title: 'Ajustar o Button',
     description:
-      'Usamos bibliotecas de componentes como base e criamos variações Sinapse sem mudar o contrato visual.',
-    items: ['shadcn/ui', 'shadcn-vue', 'Preline', 'HTML'],
+      'Quando encontra o button do shadcn, a CLI adiciona as variants ITpS sem alterar o contrato visual dos componentes existentes.',
+    items: ['button.tsx', 'itps', 'itpsSecondary'],
   },
 ]
 
@@ -155,12 +155,8 @@ const guideCards: SlideInfo[] = [
     description: 'shadcn-vue -> tokens Sinapse -> variação do botão',
   },
   {
-    title: 'Astro',
+    title: 'HTML',
     description: 'HTML + Tailwind -> tokens Sinapse -> primeiro componente',
-  },
-  {
-    title: 'HTML + Preline',
-    description: 'Preline -> tokens Sinapse -> variação do modal',
   },
 ]
 
@@ -317,7 +313,7 @@ function App() {
                 <div className="grid w-full gap-8 lg:grid-cols-[minmax(340px,1fr)_360px_minmax(340px,1fr)] lg:items-center xl:grid-cols-[minmax(420px,1.05fr)_400px_minmax(420px,1fr)] xl:gap-12">
                   <div className="grid gap-5">
                     {slideBlocks.map((item) => (
-                      <Card key={item.title} size="sm">
+                      <Card key={item.title} size="sm" className="ring-0 shadow-none">
                         <CardHeader>
                           <CardTitle className={item.tone}>
                             {item.title}
@@ -370,7 +366,7 @@ function App() {
                   </div>
 
                   <div className="grid gap-8">
-                    <Card size="sm">
+                    <Card size="sm" className="ring-0 shadow-none">
                       <CardHeader>
                         <CardTitle className="text-primary">
                           {slideOutcomes[0].title}
@@ -381,7 +377,7 @@ function App() {
                       </CardHeader>
                     </Card>
 
-                    <Card size="sm">
+                    <Card size="sm" className="ring-0 shadow-none">
                       <CardHeader>
                         <CardTitle className="text-primary">
                           {slideOutcomes[1].title}
@@ -410,21 +406,17 @@ function App() {
                     </Badge>
                     <div className="grid gap-4">
                       <h2 className="font-heading text-4xl font-semibold leading-tight md:text-6xl">
-                        Adoção por cópia controlada.
+                        Instalação guiada pela CLI.
                       </h2>
                       <p className="max-w-xl text-base leading-7 text-muted-foreground">
-                        A documentação começa com um fluxo prático: copie a
-                        base, conecte os tokens de cor e valide uma variação de
-                        componente na tecnologia do produto.
+                        O fluxo de adoção começa no projeto consumidor: rode o
+                        init, deixe a CLI aplicar os tokens e compare o antes e
+                        depois com o tema Sinapse.
                       </p>
                     </div>
-                    <div className="rounded-lg border bg-muted/40 p-5 font-mono text-sm leading-7">
-                      <div className="text-muted-foreground">src/index.css</div>
-                      <div>@import "tailwindcss";</div>
-                      <div>@import "@itps/styles";</div>
-                      <div className="text-muted-foreground">
-                        /* primeiro componente Sinapse */
-                      </div>
+                    <div className="break-words rounded-lg border bg-muted/40 p-5 font-mono text-sm leading-7">
+                      <div className="text-muted-foreground">terminal</div>
+                      <div>pnpm dlx github:DevJanderson/itps-dlx-test init</div>
                     </div>
                   </div>
 
