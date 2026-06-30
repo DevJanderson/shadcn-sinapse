@@ -417,7 +417,7 @@ function App() {
                     </div>
                     <div className="break-words rounded-lg border bg-muted/40 p-5 font-mono text-sm leading-7">
                       <div className="text-muted-foreground">terminal</div>
-                      <div>pnpm dlx github:DevJanderson/itps-dlx-test init</div>
+                      <div>pnpm dlx github:ITPS/sinapse-ui-cli init</div>
                     </div>
                   </div>
 
