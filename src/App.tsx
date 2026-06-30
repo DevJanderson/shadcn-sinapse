@@ -636,6 +636,54 @@ function App() {
         </Carousel>
       </section>
 
+      <div className="border-t px-5 py-12 md:px-8 lg:px-10">
+        <div className="mx-auto grid w-full max-w-6xl gap-6">
+          <div className="max-w-2xl space-y-3">
+            <Badge variant="outline">
+              <Layers3 aria-hidden="true" />
+              Comparativo
+            </Badge>
+            <h2 className="font-heading text-2xl font-semibold leading-tight md:text-3xl">
+              Espaço para comparar componentes.
+            </h2>
+            <p className="max-w-xl text-sm leading-6 text-muted-foreground">
+              Dois blocos vazios para adicionar um componente do Sinapse UI
+              Theme Layer e outro do shadcn/ui.
+            </p>
+          </div>
+
+          <div className="grid gap-4 lg:grid-cols-2">
+            <div className="grid gap-4">
+              <div className="grid gap-1">
+                <h3 className="font-heading text-base font-semibold">
+                  Sinapse UI Theme Layer
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  Componente de dsystem.sinapse.org.br
+                </p>
+              </div>
+              <div className="grid min-h-64 place-items-center bg-muted/30 p-6 text-sm text-muted-foreground">
+                Espaço para componente Sinapse
+              </div>
+            </div>
+
+            <div className="grid gap-4">
+              <div className="grid gap-1">
+                <h3 className="font-heading text-base font-semibold">
+                  shadcn/ui
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  Componente de ui.shadcn.com
+                </p>
+              </div>
+              <div className="grid min-h-64 place-items-center bg-muted/30 p-6 text-sm text-muted-foreground">
+                Espaço para componente shadcn/ui
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <section className="border-t bg-muted/30 px-5 py-12 md:px-8 lg:px-10">
         <div className="mx-auto grid w-full max-w-6xl gap-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
