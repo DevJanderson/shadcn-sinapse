@@ -85,16 +85,16 @@ const slideBlocks: SlideInfo[] = [
     title: 'O que é o projeto',
     tone: 'text-orange-600',
     description:
-      'O Sinapse Design System é a fonte da verdade para identidade visual, tokens de cores, variações de componentes, padrões de interface, exemplos de uso e documentação para times técnicos e não técnicos.',
+      'O Sinapse UI Theme Layer organiza identidade visual, tokens de cores, variações de componentes, padrões de interface e documentação para aplicar uma experiência consistente sobre bibliotecas existentes.',
   },
   {
     title: 'O que já existe',
     tone: 'text-emerald-700',
     items: [
       'Site de documentação',
-      'Catálogo de componentes',
+      'Exemplos de componentes base',
       'Tokens de cores e classes CSS em @itps/styles',
-      'Variações Sinapse de componentes de bibliotecas consolidadas',
+      'Variações Sinapse aplicadas sobre bibliotecas consolidadas',
       'Exemplos para diferentes tecnologias',
     ],
   },
@@ -118,21 +118,21 @@ const slideOutcomes: SlideInfo[] = [
 
 const setupCards: SlideInfo[] = [
   {
-    title: 'Rodar o init',
+    title: 'Base existente',
     description:
-      'O consumidor executa a CLI na raiz do projeto. Ela detecta o gerenciador de pacotes, instala os estilos e prepara a aplicação para receber o tema.',
-    items: ['pnpm dlx', 'init', '@itps/styles'],
+      'O projeto continua usando sua biblioteca de componentes. A CLI não troca shadcn/ui, shadcn-vue ou HTML: ela prepara essa base para receber o Sinapse.',
+    items: ['shadcn/ui', 'shadcn-vue', 'HTML'],
   },
   {
-    title: 'Aplicar o tema',
+    title: 'Tema Sinapse',
     description:
-      'A CLI encontra o CSS global, remove o tema anterior e escreve o bloco inline com tokens, dark mode e mapeamentos Tailwind.',
-    items: ['src/index.css', 'itps-theme', 'tokens'],
+      'A CLI instala os estilos, encontra o CSS global e injeta tokens, cores semânticas, dark mode e mapeamentos Tailwind.',
+    items: ['@itps/styles', 'tokens', 'dark mode'],
   },
   {
-    title: 'Ajustar o Button',
+    title: 'Pontos de integração',
     description:
-      'Quando encontra o button do shadcn, a CLI adiciona as variants ITpS sem alterar o contrato visual dos componentes existentes.',
+      'Quando necessário, a CLI ajusta componentes locais, como Button, para expor variants Sinapse sem reescrever a aplicação.',
     items: ['button.tsx', 'itps', 'itpsSecondary'],
   },
 ]
@@ -140,23 +140,23 @@ const setupCards: SlideInfo[] = [
 const guideCards: SlideInfo[] = [
   {
     title: 'React',
-    description: 'shadcn/ui -> tokens Sinapse -> variação do botão',
+    description: 'shadcn/ui como base técnica + Sinapse UI Theme Layer',
   },
   {
     title: 'Next.js',
-    description: 'shadcn/ui -> tokens Sinapse -> variação do botão',
+    description: 'shadcn/ui como base técnica + Sinapse UI Theme Layer',
   },
   {
     title: 'Vue 3',
-    description: 'shadcn-vue -> tokens Sinapse -> variação do botão',
+    description: 'shadcn-vue como base técnica + Sinapse UI Theme Layer',
   },
   {
     title: 'Nuxt 4',
-    description: 'shadcn-vue -> tokens Sinapse -> variação do botão',
+    description: 'shadcn-vue como base técnica + Sinapse UI Theme Layer',
   },
   {
     title: 'HTML',
-    description: 'HTML + Tailwind -> tokens Sinapse -> primeiro componente',
+    description: 'HTML + Tailwind + tokens Sinapse',
   },
 ]
 
@@ -294,7 +294,7 @@ function App() {
           opts={{ align: 'center', loop: true }}
           setApi={setCarouselApi}
           tabIndex={0}
-          aria-label="Apresentação do Design System Sinapse"
+          aria-label="Apresentação do Sinapse UI Theme Layer"
           className="mx-auto w-full outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
         >
           <CarouselContent className="items-stretch">
@@ -302,11 +302,11 @@ function App() {
               <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-8">
                 <div className="flex w-full max-w-3xl flex-col items-center gap-2 text-center">
                   <h1 className="font-heading text-3xl font-semibold leading-tight md:text-5xl">
-                    Design System Sinapse
+                    Sinapse UI Theme Layer
                   </h1>
                   <p className="max-w-2xl text-sm leading-6 text-muted-foreground md:text-base">
                     Uma visão executiva para explicar o problema, o escopo atual
-                    e o caminho de evolução do design system.
+                    e o caminho de evolução da camada de tema Sinapse.
                   </p>
                 </div>
 
@@ -406,12 +406,13 @@ function App() {
                     </Badge>
                     <div className="grid gap-4">
                       <h2 className="font-heading text-4xl font-semibold leading-tight md:text-6xl">
-                        Instalação guiada pela CLI.
+                        A CLI aplica o Sinapse sobre o projeto.
                       </h2>
                       <p className="max-w-xl text-base leading-7 text-muted-foreground">
-                        O fluxo de adoção começa no projeto consumidor: rode o
-                        init, deixe a CLI aplicar os tokens e compare o antes e
-                        depois com o tema Sinapse.
+                        Ela não troca a biblioteca de componentes. A CLI instala
+                        os estilos, injeta os tokens e ajusta pontos de
+                        integração para que a base passe a seguir a identidade
+                        Sinapse.
                       </p>
                     </div>
                     <div className="break-words rounded-lg border bg-muted/40 p-5 font-mono text-sm leading-7">
@@ -454,12 +455,13 @@ function App() {
                       Guias
                     </Badge>
                     <h2 className="font-heading text-4xl font-semibold leading-tight md:text-6xl">
-                      Bibliotecas conhecidas com identidade Sinapse.
+                      O Sinapse UI Theme Layer não substitui a biblioteca base.
                     </h2>
                     <p className="text-base leading-7 text-muted-foreground">
-                      A proposta não é recriar todos os componentes do zero:
-                      usamos bibliotecas consolidadas como base e aplicamos
-                      tokens, estados e variações visuais do Sinapse.
+                      Bibliotecas como shadcn/ui e shadcn-vue entregam a
+                      estrutura dos componentes. O Sinapse UI Theme Layer aplica
+                      tokens, tema e decisões visuais para alinhar essa base à
+                      identidade institucional.
                     </p>
                   </div>
 
@@ -541,10 +543,10 @@ function App() {
                       Componentes e governança
                     </Badge>
                     <h2 className="font-heading text-4xl font-semibold leading-tight md:text-6xl">
-                      Uma biblioteca pronta para crescer.
+                      Uma camada pronta para evoluir.
                     </h2>
                     <p className="mx-auto max-w-3xl text-base leading-7 text-muted-foreground">
-                      Componentes, fundamentos e etapas de evolução ficam
+                      Tokens, padrões de integração e etapas de evolução ficam
                       organizados para adoção gradual, revisão e contribuição
                       entre times.
                     </p>
